@@ -48,20 +48,17 @@ let router = new Router();
 //     await next();
 // });
 
-// app.use(async (ctx, next) => {
-//     console.log(ctx.request.header.origin);
-//     ctx.response.set('Access-Control-Allow-Origin', '*');
+app.use(async (ctx, next) => {
+  console.log(ctx.request.header.origin);
+  ctx.response.set('Access-Control-Allow-Origin', '*');
 
-//     // ctx.response.set('Access-Control-Allow-Origin',ctx.request.header.origin);
-//     ctx.response.set(
-//         'Access-Control-Allow-Methods',
-//         'PUT,POST,GET,DELETE,OPTIONS'
-//     );
-//     ctx.response.set('Access-Control-Allow-Headers', 'token');
-//     // ctx.response.set("Access-Control-Allow-Credentials",true);
+  // ctx.response.set('Access-Control-Allow-Origin',ctx.request.header.origin);
+  ctx.response.set('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
+  ctx.response.set('Access-Control-Allow-Headers', 'token');
+  // ctx.response.set("Access-Control-Allow-Credentials",true);
 
-//     await next();
-// });
+  await next();
+});
 app.use(staticFiles(__dirname + '/assets'));
 router.use(routers);
 app.use(router.routes());
