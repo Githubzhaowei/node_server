@@ -12,7 +12,7 @@ const routers = require('./src/router');
 let app = new Koa();
 let router = new Router();
 
-// app.use(bodyparser());
+app.use(bodyparser());
 // 这是处理前端跨域的配置
 // app.use(
 //   cors({
